@@ -14,7 +14,7 @@ export const meta = ({ data }) => {
   return {
     title: seoMetadata.title,
     description: seoMetadata.description,
-    'og:image': `${seoMetadata.ogImage.url}`,
+    'og:image': `${seoMetadata.ogImage?.url ? seoMetadata.ogImage.url : null}`,
   };
 };
 
@@ -33,12 +33,6 @@ function PostList(data) {
         {post.description}
       </p>
       <div className="flex justify-between mb-1">
-        <p className="text-sm sm:text-lg dark:text-gray-300">
-          <span role="image" aria-label="calendar emoji">
-            🗓{' '}
-          </span>
-          {new Date(post.sys.firstPublishedAt).toDateString()}
-        </p>
         <p className="">
           {post.tag &&
             post.tag.map((item) => (
@@ -51,10 +45,10 @@ function PostList(data) {
             ))}
         </p>
       </div>
-      <a href={`writings/${post.slug}`}>
+      <a href={`articles/${post.slug}`}>
         <p className="pt-1 sm:pt-2 text-xs sm:text-base text-primary cursor-pointer hover:text-hover w-fit dark:text-secondary">
           Read More{' '}
-          <span role="image" aria-label="arrow">
+          <span role="img" aria-label="arrow">
             →
           </span>
         </p>
@@ -67,7 +61,7 @@ export default function Writings() {
   const { blogs } = useLoaderData();
   return (
     <div className="px-8 sm:px-0 sm:max-w-2xl mx-auto">
-      <Title title="Writings" emoji="📝" />
+      <Title title="Articles" />
       {PostList(blogs)}
     </div>
   );

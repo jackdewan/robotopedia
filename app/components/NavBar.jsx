@@ -1,5 +1,6 @@
 import { NavLink } from '@remix-run/react';
 import { useState } from 'react';
+import Dog from './dog';
 
 export default function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,11 +12,13 @@ export default function NavBar() {
   return (
     <header className="sm:flex sm:justify-between sm:items-center sm:px-4 sm:py-2">
       <div className="flex items-center justify-between px-4 py-2 sm:p-0">
-        <div>
+        <div className="">
           <NavLink to="/">
-            <span role="img" aria-label="dog" className="text-5xl">
-              🐶
-            </span>
+            <div className="flex items-center">
+              <div className="w-20 h-20">
+                <Dog />
+              </div>
+            </div>
           </NavLink>
         </div>
         <div className="flex justify-between items-center">
@@ -47,27 +50,9 @@ export default function NavBar() {
         >
           <NavLink
             to="/articles"
-            className="block py-1 underline-anim underline-animate sm:ml-4 text-primary"
+            className="block py-1 hover:underline underline-animate sm:ml-4"
           >
             Articles
-          </NavLink>
-          <NavLink
-            to="/talks"
-            className="mt-1 block py-1 underline-anim underline-animate sm:mt-0 sm:ml-4  text-primary"
-          >
-            Talks
-          </NavLink>
-          <NavLink
-            to="/projects"
-            className="mt-1 block py-1 underline-anim underline-animate sm:mt-0 sm:ml-4  text-primary"
-          >
-            Projects
-          </NavLink>
-          <NavLink
-            to="/about"
-            className="mt-1 block py-1 underline-anim underline-animate sm:mt-0 sm:ml-4  text-primary"
-          >
-            About
           </NavLink>
         </div>
       </div>
