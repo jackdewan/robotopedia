@@ -1,6 +1,6 @@
 import { NavLink } from '@remix-run/react';
 import { useState } from 'react';
-import Dog from './dog';
+import Dog from './Dog';
 
 export default function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
